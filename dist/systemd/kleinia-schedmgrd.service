@@ -1,0 +1,33 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (c) 2026 The Kleinia Authors
+[Unit]
+Description=Kleinia Sched Manager (sched_ext / cache_ext / iosched_ext)
+After=multi-user.target
+# scx_* scheduler binaries may live in /usr/local/bin; local-fs is enough.
+After=local-fs.target
+
+[Service]
+Type=dbus
+BusName=io.kleinia.SchedMgr
+ExecStart=/usr/bin/schedmgrd --backend=system
+Restart=on-failure
+RestartSec=2
+# daemon must: write /sys/block/*/queue/scheduler, spawn scx_* children
+# (which attach BPF struct_ops and therefore need full root caps), and
+# persist state under /var/lib/kleinia/schedmgr. Keep hardening modest on
+# purpose: ProtectKernelTunables would remount /sys read-only and break
+# elevator switching.
+# With ProtectSystem=strict the state dir must be declared so systemd
+# creates it before entering the sandbox (VM deploy hit 226/NAMESPACE
+# when /var/lib/kleinia/schedmgr did not pre-exist).
+StateDirectory=kleinia/schedmgr
+ProtectSystem=strict
+ReadWritePaths=/var/lib/kleinia/schedmgr /sys
+ProtectHome=read-only
+PrivateTmp=yes
+RestrictAddressFamilies=AF_UNIX
+# allow restart of strategies on daemon restart
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (c) 2026 The Kleinia Authors
+[Desktop Entry]
+Type=Application
+Name=Kleinia Sched Manager
+Name[zh_CN]=Kleinia 调度管理器
+Comment=Manage CPU scheduler, page cache and per-device IO policies
+Comment[zh_CN]=管理 CPU 调度器、页缓存与每设备 IO 策略
+Exec=kleinia-schedmgr
+Icon=io.kleinia.SchedMgr
+Terminal=false
+Categories=System;
+Keywords=schedmgr;policy;cpu;scheduler;sched_ext;cache;io;disk;kleinia;
+StartupNotify=true

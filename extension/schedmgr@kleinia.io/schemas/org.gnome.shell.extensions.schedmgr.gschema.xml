@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<!-- Copyright (c) 2026 The Kleinia Authors -->
+<schemalist>
+  <schema id="org.gnome.shell.extensions.schedmgr"
+          path="/org/gnome/shell/extensions/schedmgr/">
+    <key name="bus-type" type="s">
+      <choices>
+        <choice value="system"/>
+        <choice value="session"/>
+      </choices>
+      <default>'system'</default>
+      <summary>DBus bus used to reach schedmgrd</summary>
+      <description>
+        The io.kleinia.SchedMgr daemon is normally reached on the
+        system bus. Switching to the session bus is useful when developing
+        against mock-schedmgrd (schedmgrd --session --backend=sim) inside
+        dbus-run-session. Changing this value rebuilds all proxies at
+        runtime.
+      </description>
+    </key>
+  </schema>
+</schemalist>

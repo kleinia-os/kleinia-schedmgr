@@ -1,0 +1,37 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (c) 2026 The Kleinia Authors
+#
+# OCI packaging for kleinia-schedmgr, mirroring the org-wide rpm-in-oci layout:
+#   runtime   (default)  fedora:44 + the RPM — runnable daemon demo image
+#   artifacts             FROM scratch carrying /rpms/*.rpm — the artifact
+#                         consumed by the kleinia assembly repo (artifacts.yml)
+#   just image    ->  kleinia/kleinia-schedmgr:<version> (local container store)
+#   just artifact ->  kleinia/kleinia-schedmgr:rpm (RPM carrier)
+
+ARG FEDORA_VERSION=44
+FROM registry.fedoraproject.org/fedora:${FEDORA_VERSION} AS builder
+# dbus lets tests/e2e-sim.sh actually run its private-bus e2e in-image
+# instead of printing SKIPPED (glib2-devel ships glib-compile-schemas;
+# python3 is in the Fedora base image and drives locale/gen-translations.py)
+RUN dnf -y install make gcc pkg-config glib2-devel dbus curl tar git \
+ && dnf clean all
+ARG JUST_VERSION=1.59.0
+ARG NFPM_VERSION=2.49.0
+RUN curl -fsSL -o /tmp/just.tgz \
+      https://github.com/casey/just/releases/download/${JUST_VERSION}/just-${JUST_VERSION}-x86_64-unknown-linux-musl.tar.gz \
+ && tar -xzf /tmp/just.tgz -C /usr/local/bin just \
+ && curl -fsSL -o /tmp/nfpm.tgz \
+      https://github.com/goreleaser/nfpm/releases/download/v${NFPM_VERSION}/nfpm_${NFPM_VERSION}_Linux_x86_64.tar.gz \
+ && tar -xzf /tmp/nfpm.tgz -C /usr/local/bin nfpm
+WORKDIR /src
+COPY . .
+RUN just build && just test && just package
+
+FROM registry.fedoraproject.org/fedora:${FEDORA_VERSION} AS runtime
+RUN dnf -y install glib2 && dnf clean all
+COPY --from=builder /src/build-out/*.rpm /tmp/
+RUN rpm -Uvh /tmp/*.rpm && rm -f /tmp/*.rpm
+ENTRYPOINT ["/usr/bin/schedmgr"]
+
+FROM scratch AS artifacts
+COPY --from=builder /src/build-out/*.rpm /rpms/

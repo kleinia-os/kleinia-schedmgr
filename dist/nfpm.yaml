@@ -1,0 +1,60 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (c) 2026 The Kleinia Authors
+#
+# RPM packaging declaration. All inputs come from the staged tree under
+# ./build-out/stage/, produced by `just package` via packaging/install-destdir.sh
+# (which consumes daemon/, dist/systemd/, packaging/, app/ and extension/).
+name: kleinia-schedmgr
+arch: amd64
+platform: linux
+version: "{{PKG_VERSION}}"
+section: admin
+priority: optional
+maintainer: The Kleinia Authors <release@kleinia.io>
+description: |
+  Kleinia Sched Manager: manages hot-switchable kernel scheduling policies
+  (sched_ext / cache_ext / iosched_ext) via the schedmgrd daemon and a GNOME
+  frontend (app + shell extension).
+homepage: https://kleinia.io
+license: Apache-2.0
+# Weak deps only: dnf installs them on desktop images while headless hosts
+# (and the dist/Containerfile demo image using plain `rpm -Uvh`) stay untouched.
+recommends:
+  - python3-gobject
+  - gtk4
+  - libadwaita
+contents:
+  - src: build-out/stage/usr/bin/schedmgrd
+    dst: /usr/bin/schedmgrd
+  - src: build-out/stage/usr/bin/schedmgr
+    dst: /usr/bin/schedmgr
+  - src: build-out/stage/usr/bin/kleinia-schedmgr
+    dst: /usr/bin/kleinia-schedmgr
+  - src: build-out/stage/usr/lib/systemd/system/kleinia-schedmgrd.service
+    dst: /usr/lib/systemd/system/kleinia-schedmgrd.service
+  - src: build-out/stage/usr/share/dbus-1/system.d/io.kleinia.SchedMgr.conf
+    dst: /usr/share/dbus-1/system.d/io.kleinia.SchedMgr.conf
+  - src: build-out/stage/usr/share/dbus-1/system-services/io.kleinia.SchedMgr.service
+    dst: /usr/share/dbus-1/system-services/io.kleinia.SchedMgr.service
+  - src: build-out/stage/usr/share/polkit-1/actions/io.kleinia.schedmgr.policy
+    dst: /usr/share/polkit-1/actions/io.kleinia.schedmgr.policy
+  - src: build-out/stage/etc/kleinia/schedmgr.conf
+    dst: /etc/kleinia/schedmgr.conf
+    type: config|noreplace
+  - src: build-out/stage/usr/share/gnome-shell/extensions/schedmgr@kleinia.io
+    dst: /usr/share/gnome-shell/extensions/schedmgr@kleinia.io
+  - src: build-out/stage/usr/share/kleinia-schedmgr
+    dst: /usr/share/kleinia-schedmgr
+  - src: build-out/stage/usr/share/applications/io.kleinia.SchedMgr.desktop
+    dst: /usr/share/applications/io.kleinia.SchedMgr.desktop
+  - src: build-out/stage/usr/share/icons/hicolor/scalable/apps/io.kleinia.SchedMgr.svg
+    dst: /usr/share/icons/hicolor/scalable/apps/io.kleinia.SchedMgr.svg
+  - src: build-out/stage/usr/share/icons/hicolor/scalable/apps/io.kleinia.SchedMgr-symbolic.svg
+    dst: /usr/share/icons/hicolor/scalable/apps/io.kleinia.SchedMgr-symbolic.svg
+  # explicit entry per language: nfpm globs flatten subdirectories, which would
+  # strip the <lang>/LC_MESSAGES/ hierarchy gettext requires — add new languages
+  # to app/locale/ and list their .mo here
+  - src: build-out/stage/usr/share/locale/zh_CN/LC_MESSAGES/io.kleinia.SchedMgr.mo
+    dst: /usr/share/locale/zh_CN/LC_MESSAGES/io.kleinia.SchedMgr.mo
+  - type: dir
+    dst: /var/lib/kleinia/schedmgr

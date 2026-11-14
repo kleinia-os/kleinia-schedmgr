@@ -1,0 +1,8 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (c) 2026 The Kleinia Authors
+[D-BUS Service]
+Name=io.kleinia.SchedMgr
+# Real start is delegated to systemd (Type=dbus unit below); Exec is a stub.
+Exec=/bin/false
+User=root
+SystemdService=kleinia-schedmgrd.service

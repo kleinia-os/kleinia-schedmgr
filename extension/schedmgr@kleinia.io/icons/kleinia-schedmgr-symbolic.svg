@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  kleinia-schedmgr-symbolic.svg — SchedMgr 原创象征图标
+  意象：速度计（策略可热切换的性能调节）+ 层叠方块（CPU/缓存/IO 三层策略）。
+  常规 GNOME symbolic 规范：16x16 网格，#bebebe 会被 St 重新着色。
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <g fill="#bebebe">
+    <!-- 速度计：半圆表盘（外半径 5 / 内半径 3.4，圆心 6.5,12） -->
+    <path d="M 1.5 12 A 5 5 0 0 1 11.5 12 L 9.9 12 A 3.4 3.4 0 0 0 3.1 12 Z"/>
+    <!-- 指针：指向右上 -->
+    <path d="M 6.5 11.9 L 9.4 7.7 L 10.2 8.6 Z"/>
+    <!-- 层叠方块：三级阶梯叠层 -->
+    <rect x="9.5"  y="1"    width="3" height="3"/>
+    <rect x="10.75" y="2.25" width="3" height="3"/>
+    <rect x="12"   y="3.5" width="3" height="3"/>
+  </g>
+</svg>

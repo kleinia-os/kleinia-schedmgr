@@ -1,0 +1,28 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (c) 2026 The Kleinia Authors
+
+# daemon build outputs
+daemon/schedmgrd
+daemon/schedmgr
+daemon/test-core
+*.o
+
+# compiled gsettings schemas (rebuilt by install-dev.sh / install-destdir.sh)
+extension/schedmgr@kleinia.io/schemas/gschemas.compiled
+
+# compiled translations (run app/locale/gen-translations.py)
+app/locale/*/LC_MESSAGES/
+*.mo
+
+# python
+__pycache__/
+*.pyc
+
+# install staging roots
+stage/
+
+# unified build interface output (just build / just package)
+build-out/
+
+# transient rendered nfpm config (just package)
+.nfpm.rendered.yaml

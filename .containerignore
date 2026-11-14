@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (c) 2026 The Kleinia Authors
+#
+# Host-side artifacts stay out of the image build context so the
+# in-container toolchain really rebuilds (timestamp-based make would
+# otherwise reuse host binaries linked against the host libc).
+build-out/
+daemon/schedmgrd
+daemon/schedmgr
+daemon/test-core
+stage/
+__pycache__/
+*.o
+*.a
+*.so
+.nfpm.rendered.yaml

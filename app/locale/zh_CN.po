@@ -1,0 +1,346 @@
+# io.kleinia.SchedMgr — Simplified Chinese translations.
+# 中文译文；由 locale/gen-translations.py 与源码同步合并，
+# 译文请直接编辑本文件。
+
+msgstr ""
+"Project-Id-Version: io.kleinia.SchedMgr 1.0\n"
+"Report-Msgid-Bugs-To: kleinia@kleinia.io\n"
+"PO-Revision-Date: 2026-10-28 23:59+0800\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: locale/gen-translations.py\n"
+
+#: window.py:578
+msgid "%d block devices · %d using scx_io"
+msgstr "%d 个块设备 · %d 个使用 scx_io"
+
+#: window.py:173
+msgid "%s is not on the %s bus.\n\nStart kleinia-schedmgrd.service (system bus), or run mock-schedmgrd.py on the session bus for testing."
+msgstr "%s 未在 %s 总线上。\n\n请启动 kleinia-schedmgrd.service（system 总线），或在会话总线上运行 mock-schedmgrd.py 进行测试。"
+
+#: window.py:435
+msgid "%s switched to %s"
+msgstr "%s 已切换到 %s"
+
+#: pages.py:516
+msgid "%s · Current: %s"
+msgstr "%s · 当前: %s"
+
+#: schedmgr-client.py:80
+msgid "Access denied — polkit authorization failed (io.kleinia.schedmgr.apply)."
+msgstr "权限被拒绝 — polkit 授权失败（io.kleinia.schedmgr.apply）。"
+
+#: pages.py:365
+msgid "Advanced Parameters"
+msgstr "高级参数"
+
+#: window.py:393
+msgid "All %d block devices will be restored to their respective default IO schedulers. Continue?"
+msgstr "将把 %d 个块设备全部恢复为各自的默认 IO 调度器。确定继续吗？"
+
+#: window.py:373
+msgid "All %d block devices will be switched to the scx_io IO scheduler; brief IO hiccups may occur during the switch. Continue?"
+msgstr "将把 %d 个块设备的 IO 调度器全部切换为 scx_io，切换期间可能出现短暂的 IO 抖动。确定继续吗？"
+
+#: pages.py:685
+msgid "All Devices"
+msgstr "全部设备"
+
+#: pages.py:374 pages.py:493 pages.py:568
+msgid "Apply"
+msgstr "应用"
+
+#: pages.py:686
+msgid "Apply one operation to all block devices"
+msgstr "对全部块设备应用同一操作"
+
+#: pages.py:401
+msgid "Apply the selected policy, or restart / stop / restore the default"
+msgstr "应用选中策略，或重启 / 停止 / 恢复默认"
+
+#: schedmgr-client.py:83
+msgid "Authentication was cancelled."
+msgstr "认证已取消。"
+
+#: pages.py:634
+msgid "Backend"
+msgstr "后端"
+
+#: pages.py:684
+msgid "Batch Operations"
+msgstr "批量操作"
+
+#: window.py:417
+msgid "Batch operation partially failed (%d/%d devices)"
+msgstr "批量操作部分失败（%d/%d 个设备）"
+
+#: pages.py:674
+msgid "Block Devices"
+msgstr "块设备"
+
+#: window.py:72 pages.py:646
+msgid "CPU Scheduler"
+msgstr "CPU 调度器"
+
+#: window.py:221
+msgid "Cancel"
+msgstr "取消"
+
+#: pages.py:517
+msgid "Current: %s"
+msgstr "当前: %s"
+
+#: pages.py:567 pages.py:611
+msgid "Current: %s · global eBPF policy"
+msgstr "当前: %s · 全局 eBPF 策略"
+
+#: pages.py:302
+msgid "Default Policy"
+msgstr "默认策略"
+
+#: pages.py:524
+msgid "Default: %s"
+msgstr "默认: %s"
+
+#: pages.py:492
+msgid "Default: —"
+msgstr "默认: —"
+
+#: pages.py:668
+msgid "Disk IO"
+msgstr "磁盘 IO"
+
+#: window.py:165
+msgid "Dismiss"
+msgstr "知道了"
+
+#: window.py:510
+msgid "Failed to apply policy “%s”: %s"
+msgstr "策略 “%s” 应用失败：%s"
+
+#: schedmgr-client.py:196
+msgid "Failed to create proxy for %s (%s): %s"
+msgstr "为 %s (%s) 创建代理失败：%s"
+
+#: window.py:74 pages.py:557
+msgid "Global IO Policy"
+msgstr "全局 IO 策略"
+
+#: pages.py:636
+msgid "Interface Version"
+msgstr "接口版本"
+
+#: window.py:301
+msgid "Invalid parameters: %s"
+msgstr "参数无效：%s"
+
+#: pages.py:635
+msgid "Kernel Version"
+msgstr "内核版本"
+
+#: window.py:101
+msgid "Kleinia Sched Manager"
+msgstr "Kleinia 调度管理器"
+
+#: window.py:581
+msgid "No block devices found"
+msgstr "未发现块设备"
+
+#: pages.py:525
+msgid "No default configured"
+msgstr "未配置默认"
+
+#: schedmgr-client.py:74
+msgid "No default strategy is configured."
+msgstr "未配置默认策略。"
+
+#: schedmgr-client.py:72
+msgid "No strategy is currently running."
+msgstr "当前没有正在运行的策略。"
+
+#: schedmgr-client.py:88
+msgid "No such method on the daemon — client/server version mismatch?"
+msgstr "守护进程上无此方法 — 客户端/服务端版本不匹配？"
+
+#: schedmgr-client.py:67
+msgid "No such strategy on this domain."
+msgstr "该域上没有此策略。"
+
+#: pages.py:511
+msgid "None"
+msgstr "无"
+
+#: pages.py:182
+msgid "None (EEVDF · kernel default)"
+msgstr "无 · EEVDF（内核默认调度类）"
+
+#: pages.py:186
+msgid "None (kernel default)"
+msgstr "无（内核默认）"
+
+#: pages.py:184
+msgid "None (no global eBPF policy)"
+msgstr "无（未运行全局 eBPF 策略）"
+
+#: schedmgr-client.py:85
+msgid "Not authorized to modify system policies (io.kleinia.schedmgr.apply)."
+msgstr "无权修改系统策略（io.kleinia.schedmgr.apply）。"
+
+#: pages.py:324 pages.py:599
+msgid "Not supported on this system"
+msgstr "当前系统不支持该功能"
+
+#: pages.py:354
+msgid "Operations"
+msgstr "操作"
+
+#: pages.py:657
+msgid "Page Cache"
+msgstr "页缓存"
+
+#: window.py:73
+msgid "Page Cache Policy"
+msgstr "页缓存策略"
+
+#: pages.py:369
+msgid "Parameters"
+msgstr "参数"
+
+#: pages.py:340
+msgid "Params: %s"
+msgstr "参数: %s"
+
+#: pages.py:378
+msgid "Restart"
+msgstr "重启"
+
+#: window.py:439
+msgid "Restarted the current policy"
+msgstr "已重启当前策略"
+
+#: window.py:392 pages.py:691
+msgid "Restore All Defaults"
+msgstr "全部恢复默认"
+
+#: window.py:395 pages.py:387
+msgid "Restore Defaults"
+msgstr "恢复默认"
+
+#: window.py:389
+msgid "Restored all %d devices to their defaults"
+msgstr "已将 %d 个设备全部恢复默认"
+
+#: window.py:441
+msgid "Restored the default policy"
+msgstr "已恢复默认策略"
+
+#: pages.py:400
+msgid "Run"
+msgstr "执行"
+
+#: pages.py:334
+msgid "Running"
+msgstr "运行中"
+
+#: pages.py:492
+msgid "Scheduler"
+msgstr "调度器"
+
+#: pages.py:357
+msgid "Select a policy, then click Apply"
+msgstr "选择策略后点击「应用」"
+
+#: pages.py:633
+msgid "Service Info"
+msgstr "服务信息"
+
+#: window.py:171
+msgid "Service Not Running"
+msgstr "服务未运行"
+
+#: pages.py:316
+msgid "Service not connected"
+msgstr "未连接服务"
+
+#: window.py:88
+msgid "Simulation Mode — all operations only affect demo data; the real system is not modified"
+msgstr "模拟模式 — 所有操作仅影响演示数据，不会修改真实系统"
+
+#: pages.py:366
+msgid "Space-separated command line arguments, e.g. -v -b 10"
+msgstr "空格分隔的命令行参数，如 -v -b 10"
+
+#: pages.py:673 pages.py:290
+msgid "Status"
+msgstr "状态"
+
+#: window.py:316 window.py:354 pages.py:383 pages.py:572
+msgid "Stop"
+msgstr "停止"
+
+#: window.py:311 window.py:352
+msgid "Stop Policy"
+msgstr "停止策略"
+
+#: window.py:437 pages.py:338
+msgid "Stopped"
+msgstr "已停止"
+
+#: window.py:376
+msgid "Switch All"
+msgstr "全部切换"
+
+#: window.py:372 pages.py:687
+msgid "Switch All to scx_io"
+msgstr "全部切换到 scx_io"
+
+#: pages.py:356 pages.py:566
+msgid "Switch Strategy"
+msgstr "切换策略"
+
+#: window.py:369
+msgid "Switched all %d devices to scx_io"
+msgstr "已将 %d 个设备全部切换到 scx_io"
+
+#: window.py:432
+msgid "Switched to %s"
+msgstr "已切换到 %s"
+
+#: schedmgr-client.py:78
+msgid "The policy manager daemon reported a failure."
+msgstr "策略管理守护进程报告了失败。"
+
+#: schedmgr-client.py:386
+msgid "The policy manager service is not connected."
+msgstr "策略管理服务未连接。"
+
+#: schedmgr-client.py:76
+msgid "This feature is not available on this system."
+msgstr "该功能在当前系统上不可用。"
+
+#: schedmgr-client.py:69
+msgid "This operation is not supported on this domain (parameters only apply to the CPU scheduler)."
+msgstr "该域不支持此操作（参数仅适用于 CPU 调度器）。"
+
+#: window.py:84
+msgid "This will stop the global eBPF IO policy loader. Devices already switched to the scx_io elevator stay on it. Stop it?"
+msgstr "将停止全局 eBPF IO 策略加载器；已切换到 scx_io elevator 的设备不会自动回退。确定要停止吗？"
+
+#: window.py:81
+msgid "This will stop the page cache policy and return to the kernel's default behavior. Stop it?"
+msgstr "将停止页缓存策略，回到内核默认的换出行为。确定要停止吗？"
+
+#: window.py:313
+msgid "This will stop the policy running on %s and return to the default state. Stop it?"
+msgstr "将停止 %s 上正在运行的策略并回到默认状态。确定要停止吗？"
+
+#: window.py:78
+msgid "This will stop the running sched_ext policy on the CPU scheduler and fall back to EEVDF, the kernel's default scheduling class. Stop it?"
+msgstr "将停止 CPU 调度器上正在运行的 sched_ext 策略，回到内核默认调度类 EEVDF。确定要停止吗？"
+
+#: pages.py:293 pages.py:560
+msgid "Unavailable"
+msgstr "不可用"

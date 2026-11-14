@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (c) 2026 The Kleinia Authors
+# kleinia-schedmgr — io.kleinia.SchedMgr（Kleinia Sched Manager）启动脚本
+# 用法：kleinia-schedmgr [--session] [--selftest N]
+#   KLEINIA_SCHEDMGR_BUS=session 环境变量等效于 --session（默认 system 总线）
+# 源码树内按脚本自身路径定位 main.py；安装态（脚本位于 /usr/bin）回落到
+# /usr/share/kleinia-schedmgr/main.py（与 packaging/install-destdir.sh 布局一致）。
+set -e
+HERE="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
+if [ -f "$HERE/main.py" ]; then
+    exec python3 -u "$HERE/main.py" "$@"
+fi
+exec python3 -u /usr/share/kleinia-schedmgr/main.py "$@"
